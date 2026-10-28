@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" width="200" height="150"
+     role="img" aria-label="Télécopieur beige recrachant une feuille">
+  <title>Télécopieur</title>
+  <style>
+    @keyframes fx-blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0.15; } }
+    @keyframes fx-feed  { 0% { transform: translateY(4px); } 100% { transform: translateY(0); } }
+    .fx-led   { animation: fx-blink 0.7s steps(1, end) infinite; }
+    .fx-sheet { animation: fx-feed 1.6s ease-in-out infinite alternate; }
+    @media (prefers-reduced-motion: reduce) {
+      .fx-led, .fx-sheet { animation: none; }
+    }
+  </style>
+
+  <!-- sheet feeding out -->
+  <g class="fx-sheet">
+    <path d="M58 16 L150 16 L150 74 L58 74 Z" fill="#fdfcf5" stroke="#8a8673" stroke-width="2"/>
+    <g fill="#b9b5a2">
+      <rect x="68" y="26" width="64" height="4"/>
+      <rect x="68" y="36" width="72" height="4"/>
+      <rect x="68" y="46" width="50" height="4"/>
+      <rect x="68" y="56" width="66" height="4"/>
+    </g>
+  </g>
+
+  <!-- body -->
+  <path d="M22 70 L178 70 L186 132 L14 132 Z" fill="#e4dfc9" stroke="#6f6a55" stroke-width="3"
+        stroke-linejoin="round"/>
+  <path d="M30 70 L170 70 L174 86 L26 86 Z" fill="#cfc9ae" stroke="#6f6a55" stroke-width="2.5"/>
+  <rect x="34" y="96" width="60" height="22" rx="3" fill="#2f3a2c" stroke="#6f6a55" stroke-width="2.5"/>
+  <rect x="40" y="102" width="34" height="4" fill="#7ee07e"/>
+  <rect x="40" y="110" width="22" height="4" fill="#7ee07e"/>
+
+  <!-- keypad -->
+  <g fill="#f4f0dd" stroke="#6f6a55" stroke-width="1.6">
+    <rect x="108" y="96" width="14" height="10" rx="2"/>
+    <rect x="128" y="96" width="14" height="10" rx="2"/>
+    <rect x="148" y="96" width="14" height="10" rx="2"/>
+    <rect x="108" y="110" width="14" height="10" rx="2"/>
+    <rect x="128" y="110" width="14" height="10" rx="2"/>
+    <rect x="148" y="110" width="14" height="10" rx="2"/>
+  </g>
+
+  <circle class="fx-led" cx="26" cy="92" r="5" fill="#ff3b30" stroke="#6f6a55" stroke-width="1.6"/>
+
+  <!-- handset -->
+  <path d="M176 92 q10 0 10 10 l0 18 q0 10 -10 10" fill="none" stroke="#6f6a55" stroke-width="6"
+        stroke-linecap="round"/>
+</svg>

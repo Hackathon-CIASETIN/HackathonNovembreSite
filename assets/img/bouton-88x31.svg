@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 31" width="88" height="31"
+     shape-rendering="crispEdges" role="img" aria-label="Bouton 88x31 du Buildathon ASETIN">
+  <title>Liez-nous !</title>
+  <rect width="88" height="31" fill="#140c1e"/>
+  <rect x="1" y="1" width="86" height="29" fill="#e0479e"/>
+  <rect x="1" y="1" width="86" height="14" fill="#262c66"/>
+  <text x="44" y="11" text-anchor="middle" font-family="'Courier New', monospace"
+        font-size="9" font-weight="bold" fill="#ffffff">BUILDATHON</text>
+  <text x="44" y="25" text-anchor="middle" font-family="'Courier New', monospace"
+        font-size="9" font-weight="bold" fill="#140c1e">ASETIN '26</text>
+</svg>

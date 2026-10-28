@@ -1,0 +1,376 @@
+/* ==========================================================================
+   Buildathon ASETIN — page de catégorie «&nbsp;Santé&nbsp;» présentée en télécopie
+   ========================================================================== */
+
+:root {
+  --papier:      #fdfbf2;
+  --papier-pli:  #efebdc;
+  --toner:       #23231f;
+  --toner-pale:  #6d6c63;
+  --rose:        #e0479e;
+  --marine:      #262c66;
+  --fond:        #1b1b20;
+  --mono: 'Courier New', Courier, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 24px 10px 60px;
+  background: var(--fond);
+  background-image:
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 3px);
+  font-family: var(--mono);
+  color: var(--papier);
+}
+
+/* --------------------------------------------------------------------------
+   Le rouleau de papier thermique
+   -------------------------------------------------------------------------- */
+
+.rouleau {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 0 28px;
+  background: var(--papier);
+  color: var(--toner);
+  box-shadow: 0 0 0 1px #0c0c0f, 14px 18px 40px rgba(0, 0, 0, 0.65);
+}
+
+/* bandes horizontales très légères : le grain de l'impression thermique */
+.rouleau::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    180deg, rgba(0, 0, 0, 0.035) 0 1px, transparent 1px 4px);
+}
+
+/* la traînée verticale classique d'une tête d'impression sale */
+.rouleau::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 72%;
+  width: 3px;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.07);
+}
+
+/* bord déchiré en haut et en bas */
+.dechirure {
+  height: 10px;
+  background:
+    linear-gradient(135deg, var(--papier) 50%, transparent 50%) repeat-x 0 0 / 12px 10px,
+    linear-gradient(225deg, var(--papier) 50%, transparent 50%) repeat-x 6px 0 / 12px 10px;
+}
+
+.dechirure--bas { transform: rotate(180deg); }
+
+/* --------------------------------------------------------------------------
+   En-tête de transmission répété en haut de chaque feuillet
+   -------------------------------------------------------------------------- */
+
+.feuillet {
+  padding: 0 36px;
+  border-top: 1px dashed #c8c3b1;
+}
+
+.feuillet:first-of-type { border-top: 0; }
+
+.ligne-transmission {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 14px;
+  margin: 0 -36px 18px;
+  padding: 3px 36px;
+  font-size: 10.5px;
+  letter-spacing: 0.4px;
+  color: var(--toner-pale);
+  border-bottom: 1px solid #ddd8c7;
+}
+
+/* --------------------------------------------------------------------------
+   Contenu de la télécopie
+   -------------------------------------------------------------------------- */
+
+.rouleau h1 {
+  margin: 0 0 4px;
+  font-size: clamp(18px, 4.2vw, 26px);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-bottom: 3px double var(--toner);
+  padding-bottom: 6px;
+}
+
+.rouleau h2 {
+  margin: 26px 0 10px;
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  background: var(--toner);
+  color: var(--papier);
+  padding: 3px 8px;
+  display: inline-block;
+}
+
+.rouleau h3 {
+  margin: 18px 0 6px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+
+.rouleau p,
+.rouleau li { font-size: 13.5px; line-height: 1.65; }
+
+.rouleau ul { padding-left: 20px; }
+.rouleau li { margin-bottom: 7px; }
+
+.logo-fax { width: 220px; max-width: 60%; height: auto; margin-bottom: 10px; filter: grayscale(1) contrast(1.25); }
+
+.bloc-entete {
+  margin: 14px 0 6px;
+  padding: 10px 12px;
+  border: 2px solid var(--toner);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.bloc-entete dl { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 2px 10px; margin: 0; }
+.bloc-entete dt { font-weight: bold; letter-spacing: 0.5px; }
+.bloc-entete dd { margin: 0; }
+
+.tampon {
+  display: inline-block;
+  margin: 14px 0;
+  padding: 6px 14px;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  color: #a3243f;
+  border: 3px solid #a3243f;
+  transform: rotate(-4deg);
+  opacity: 0.8;
+}
+
+.pale { color: var(--toner-pale); font-size: 12px; }
+
+.mandat {
+  margin: 14px 0;
+  padding: 14px;
+  border: 3px double var(--toner);
+  background: var(--papier-pli);
+}
+
+.mandat .punch {
+  margin: 0;
+  font-size: clamp(15px, 3.6vw, 20px);
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.deux-colonnes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 0 24px;
+}
+
+.signature {
+  margin-top: 26px;
+  padding-top: 12px;
+  border-top: 1px solid #ccc7b6;
+  font-size: 12.5px;
+}
+
+.signature .paraphe {
+  font-family: 'Segoe Script', 'Brush Script MT', 'Comic Sans MS', cursive;
+  font-size: 26px;
+  line-height: 1.1;
+}
+
+/* --------------------------------------------------------------------------
+   Barre d'actions (hors papier)
+   -------------------------------------------------------------------------- */
+
+.actions {
+  max-width: 760px;
+  margin: 18px auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.btn {
+  display: inline-block;
+  padding: 9px 14px;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(180deg, #4a4a58 0%, #2f2f39 100%);
+  border: 2px solid #000;
+  box-shadow: 3px 3px 0 #000;
+}
+
+.btn:hover { background: linear-gradient(180deg, #5c5c6c 0%, #3b3b47 100%); }
+.btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 #000; }
+
+.btn--rose { background: linear-gradient(180deg, #ff6fb8 0%, var(--rose) 100%); color: #fff; }
+.btn--rose:hover { background: linear-gradient(180deg, #ff8ac7 0%, #ec5aab 100%); }
+
+:where(a, button, summary):focus-visible { outline: 3px solid #ffc400; outline-offset: 2px; }
+
+/* --------------------------------------------------------------------------
+   Animation d'impression (ajoutée par JS seulement)
+   -------------------------------------------------------------------------- */
+
+.js .a-imprimer {
+  clip-path: inset(0 0 100% 0);
+  opacity: 0;
+}
+
+.js .a-imprimer.imprime {
+  clip-path: inset(0 0 0 0);
+  opacity: 1;
+  transition: clip-path 0.55s steps(14, end), opacity 0.2s linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .a-imprimer { clip-path: none; opacity: 1; transition: none; }
+}
+
+/* --------------------------------------------------------------------------
+   Fausse boîte de dialogue système
+   -------------------------------------------------------------------------- */
+
+.voile {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.voile[hidden] { display: none; }
+
+.dialogue {
+  width: min(430px, 100%);
+  background: #d6d3cc;
+  border: 2px solid #0a0a0a;
+  box-shadow: inset -2px -2px 0 #85837c, inset 2px 2px 0 #fff, 6px 6px 0 rgba(0, 0, 0, 0.5);
+  color: #111;
+  font-family: Tahoma, Verdana, sans-serif;
+  font-size: 12px;
+}
+
+.dialogue .barre {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3px 5px;
+  font-weight: bold;
+  font-size: 12px;
+  color: #fff;
+  background: linear-gradient(180deg, #3a4290 0%, #262c66 100%);
+}
+
+.dialogue .barre i {
+  width: 15px;
+  height: 14px;
+  font-style: normal;
+  font-size: 10px;
+  line-height: 13px;
+  text-align: center;
+  color: #111;
+  background: #d6d3cc;
+  border: 1px solid #0a0a0a;
+  box-shadow: inset -1px -1px 0 #85837c, inset 1px 1px 0 #fff;
+}
+
+.dialogue .corps { display: flex; gap: 12px; padding: 16px 14px 10px; }
+.dialogue .icone { font-size: 30px; line-height: 1; flex: none; }
+.dialogue p { margin: 0 0 8px; line-height: 1.5; }
+.dialogue p:last-child { margin-bottom: 0; }
+
+.jauge {
+  height: 16px;
+  margin-top: 10px;
+  padding: 2px;
+  background: #fff;
+  border: 1px solid #0a0a0a;
+  box-shadow: inset 1px 1px 0 #85837c;
+}
+
+.jauge span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: repeating-linear-gradient(90deg, #262c66 0 8px, #d6d3cc 8px 10px);
+  transition: width 0.25s linear;
+}
+
+.dialogue .pied-dialogue {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  padding: 10px 14px 14px;
+}
+
+.dialogue button {
+  min-width: 86px;
+  padding: 4px 10px;
+  font-family: Tahoma, Verdana, sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+  color: #111;
+  background: #d6d3cc;
+  border: 1px solid #0a0a0a;
+  box-shadow: inset -2px -2px 0 #85837c, inset 2px 2px 0 #fff;
+}
+
+.dialogue button:active { box-shadow: inset 2px 2px 0 #85837c, inset -2px -2px 0 #fff; }
+.dialogue button[disabled] { color: #85837c; cursor: default; }
+
+/* --------------------------------------------------------------------------
+   Impression réelle
+   -------------------------------------------------------------------------- */
+
+@media print {
+  body { background: #fff; padding: 0; }
+  .rouleau {
+    max-width: none;
+    box-shadow: none;
+    color: #000;
+    background: #fff;
+  }
+  .rouleau::before, .rouleau::after { display: none; }
+  .actions, .voile, .dechirure, .barre-son { display: none !important; }
+  .js .a-imprimer { clip-path: none; opacity: 1; }
+  .feuillet { padding: 0 8mm; page-break-inside: avoid; }
+  .feuillet + .feuillet { page-break-before: always; border-top: 0; }
+  .tampon { opacity: 1; }
+}
+
+@media (max-width: 560px) {
+  .feuillet { padding: 0 18px; }
+  .ligne-transmission { margin: 0 -18px 14px; padding: 3px 18px; font-size: 9.5px; }
+  .bloc-entete dl { grid-template-columns: minmax(0, 1fr); }
+  .bloc-entete dt { margin-top: 6px; }
+}

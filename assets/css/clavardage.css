@@ -1,0 +1,245 @@
+/* ==========================================================================
+   AsetinBot 2000 — widget de clavardage rétro
+   Feuille autonome : fonctionne sur index.html comme sur sante.html.
+   ========================================================================== */
+
+.cv-widget {
+  --cv-rose:   #e0479e;
+  --cv-marine: #262c66;
+  --cv-encre:  #140c1e;
+  --cv-creme:  #f2ede4;
+  --cv-vert:   #1aff5c;
+  --cv-mono:   'Courier New', Courier, monospace;
+  --cv-fun:    'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', cursive;
+
+  position: fixed;
+  right: 12px;
+  bottom: 12px;
+  z-index: 9000;
+  width: 248px;
+  font-family: Verdana, Geneva, 'DejaVu Sans', sans-serif;
+  font-size: 12px;
+  color: var(--cv-encre);
+}
+
+.cv-cadre {
+  background: var(--cv-creme);
+  border: 2px solid var(--cv-encre);
+  box-shadow: inset -2px -2px 0 rgba(0, 0, 0, 0.25), inset 2px 2px 0 #fff,
+              5px 5px 0 rgba(0, 0, 0, 0.45);
+}
+
+/* ---- barre de titre ---- */
+
+.cv-barre {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  width: 100%;
+  margin: 0;
+  padding: 5px 6px;
+  font-family: Impact, 'Haettenschweiler', 'Arial Black', sans-serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: left;
+  color: #fff;
+  background: linear-gradient(180deg, #3a4290 0%, var(--cv-marine) 100%);
+  border: 0;
+  border-bottom: 2px solid var(--cv-encre);
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+
+.cv-barre:hover { background: linear-gradient(180deg, #454ea5 0%, #2d3376 100%); }
+
+.cv-titre { display: flex; align-items: center; gap: 5px; }
+
+.cv-pastille {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cv-vert);
+  box-shadow: 0 0 5px var(--cv-vert);
+  animation: cv-pulse 2s ease-in-out infinite;
+}
+
+@keyframes cv-pulse { 50% { opacity: 0.35; } }
+
+.cv-boutons { display: flex; gap: 3px; flex: none; }
+
+.cv-boutons i {
+  width: 14px;
+  height: 13px;
+  font-style: normal;
+  font-family: var(--cv-mono);
+  font-size: 10px;
+  line-height: 12px;
+  text-align: center;
+  color: var(--cv-encre);
+  background: #c9c9c9;
+  border: 1px solid var(--cv-encre);
+  box-shadow: inset -1px -1px 0 #7a7a7a, inset 1px 1px 0 #fff;
+}
+
+/* pastille d'alerte quand le widget est replié */
+.cv-alerte {
+  display: none;
+  min-width: 15px;
+  height: 15px;
+  padding: 0 3px;
+  font-family: var(--cv-mono);
+  font-size: 10px;
+  font-weight: bold;
+  line-height: 15px;
+  text-align: center;
+  color: #fff;
+  background: #d12b2b;
+  border: 1px solid var(--cv-encre);
+  border-radius: 8px;
+}
+
+.cv-widget[data-ouvert="false"] .cv-alerte[data-actif="true"] { display: inline-block; }
+
+/* ---- corps ---- */
+
+.cv-corps { display: block; }
+.cv-widget[data-ouvert="false"] .cv-corps { display: none; }
+
+.cv-fil {
+  height: 196px;
+  padding: 8px;
+  overflow-y: auto;
+  background:
+    repeating-linear-gradient(180deg, transparent 0 23px, rgba(38, 44, 102, 0.05) 23px 24px),
+    #fff;
+  border-bottom: 2px solid var(--cv-encre);
+}
+
+.cv-msg { display: flex; gap: 6px; margin-bottom: 9px; align-items: flex-start; }
+.cv-msg:last-child { margin-bottom: 0; }
+
+.cv-msg img {
+  width: 30px;
+  height: auto;
+  flex: none;
+  image-rendering: pixelated;
+}
+
+.cv-bulle {
+  position: relative;
+  max-width: 182px;
+  padding: 5px 7px;
+  font-family: var(--cv-fun);
+  font-size: 11.5px;
+  line-height: 1.45;
+  background: #eef1ff;
+  border: 1px solid var(--cv-marine);
+}
+
+.cv-msg--moi { flex-direction: row-reverse; }
+.cv-msg--moi .cv-bulle { background: #ffe3f3; border-color: var(--cv-rose); }
+
+.cv-msg--systeme {
+  justify-content: center;
+  font-family: var(--cv-mono);
+  font-size: 10px;
+  color: #7a7568;
+  text-align: center;
+}
+
+.cv-horodatage {
+  display: block;
+  margin-top: 3px;
+  font-family: var(--cv-mono);
+  font-size: 9px;
+  color: #8a8578;
+}
+
+/* indicateur « est en train d'écrire » */
+.cv-points span {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-right: 2px;
+  background: var(--cv-marine);
+  border-radius: 50%;
+  animation: cv-saut 1.1s ease-in-out infinite;
+}
+
+.cv-points span:nth-child(2) { animation-delay: 0.15s; }
+.cv-points span:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes cv-saut {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30%           { transform: translateY(-4px); opacity: 1; }
+}
+
+/* ---- saisie ---- */
+
+.cv-saisie { display: flex; flex-direction: column; gap: 5px; padding: 7px; }
+
+.cv-saisie textarea {
+  width: 100%;
+  height: 50px;
+  padding: 5px;
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 11.5px;
+  resize: none;
+  color: var(--cv-encre);
+  background: #fff;
+  border: 2px inset #b8b3a4;
+}
+
+.cv-saisie textarea:focus-visible,
+.cv-barre:focus-visible,
+.cv-envoyer:focus-visible { outline: 3px solid #ffc400; outline-offset: 1px; }
+
+.cv-rangee { display: flex; gap: 5px; align-items: center; }
+
+.cv-envoyer {
+  flex: 1;
+  padding: 6px 8px;
+  font-family: Impact, 'Arial Black', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(180deg, #ff6fb8 0%, var(--cv-rose) 45%, #b22f78 100%);
+  border: 2px solid var(--cv-encre);
+  box-shadow: 2px 2px 0 var(--cv-marine);
+  text-shadow: 1px 1px 0 var(--cv-encre);
+}
+
+.cv-envoyer:hover { background: linear-gradient(180deg, #ff8ac7 0%, #ec5aab 45%, #c5368a 100%); }
+.cv-envoyer:active { transform: translate(2px, 2px); box-shadow: 0 0 0 var(--cv-marine); }
+.cv-envoyer[disabled] { filter: grayscale(0.7); cursor: default; }
+
+.cv-etat {
+  padding: 0 7px 7px;
+  font-family: var(--cv-mono);
+  font-size: 9.5px;
+  line-height: 1.4;
+  color: #7a7568;
+}
+
+.cv-etat b { color: #0a7d2e; }
+.cv-etat.cv-echec b { color: #c0251f; }
+
+/* ---- bouton replié ---- */
+
+.cv-widget[data-ouvert="false"] .cv-cadre { box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.45); }
+
+@media (max-width: 520px) {
+  .cv-widget { width: calc(100vw - 20px); right: 10px; bottom: 10px; }
+  .cv-bulle { max-width: none; }
+  .cv-fil { height: 160px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cv-pastille, .cv-points span { animation: none; }
+}
+
+@media print { .cv-widget { display: none !important; } }
