@@ -58,41 +58,73 @@ body {
 
 .banniere {
   position: relative;
-  padding: 14px 12px 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 260px;
+  padding: 20px 12px 16px;
   text-align: center;
-  background:
-    repeating-linear-gradient(135deg, rgba(255,255,255,0.08) 0 10px, transparent 10px 20px),
-    linear-gradient(180deg, var(--rose) 0%, var(--rose-fonce) 100%);
+  background: linear-gradient(180deg, #5ec8ff 0%, #bfe9ff 100%);
   border-bottom: 3px solid var(--encre);
 }
 
-.banniere h1 {
-  margin: 0;
-  font-family: var(--police-titre);
-  font-size: clamp(30px, 7vw, 58px);
-  letter-spacing: 2px;
-  line-height: 1;
-  color: #fff;
-  text-transform: uppercase;
-  text-shadow:
-    3px 3px 0 var(--marine),
-    5px 5px 0 var(--encre);
+.banniere h1 { position: relative; z-index: 1; }
+
+.banniere h1 { margin: 0; line-height: 0; }
+
+.banniere .logo {
+  width: min(560px, 85%);
+  height: auto;
 }
 
-.banniere .sous-titre {
-  margin: 6px 0 0;
-  font-family: var(--police-fun);
-  font-size: 14px;
-  color: #fff;
-  text-shadow: 1px 1px 0 var(--encre);
-}
+/* ciel : les nuages défilent en boucle, les oiseaux passent de temps en temps */
+.ciel { position: absolute; inset: 0; z-index: 0; }
 
-.banniere .hibou-logo {
-  display: block;
-  margin: 0 auto 6px;
-  width: 92px;
+.ciel img {
+  position: absolute;
+  left: -200px;
   height: auto;
   image-rendering: pixelated;
+}
+
+.nuage { animation: nuage-passe linear infinite; }
+.nuage:nth-child(1) { top: 4%;  width: 170px; animation-duration: 60s; animation-delay: -12s; }
+.nuage:nth-child(2) { top: 38%; width: 120px; animation-duration: 45s; animation-delay: -30s; }
+.nuage:nth-child(3) { top: 48%; width: 180px; animation-duration: 70s; animation-delay: -50s; }
+.nuage:nth-child(4) { top: 18%; width: 95px;  animation-duration: 38s; animation-delay: -5s; }
+
+@keyframes nuage-passe {
+  from { left: -200px; }
+  to   { left: 100%; }
+}
+
+/* l'image est vue de dessus, tête en bas : rotate(-90deg) la fait voler vers la droite */
+.oiseau {
+  width: 44px;
+  transform: rotate(-90deg);
+  animation: oiseau-passe linear infinite;
+}
+.oiseau:nth-of-type(5) { top: 22%; animation-duration: 23s; animation-delay: 4s; }
+.oiseau:nth-of-type(6) { top: 70%; width: 32px; animation-duration: 31s; animation-delay: 15s; }
+
+/* traverse pendant les premiers 18 % du cycle, puis reste hors champ */
+@keyframes oiseau-passe {
+  0%   { left: -80px;              transform: translateY(0) rotate(-90deg); }
+  6%   {                           transform: translateY(-10px) rotate(-90deg); }
+  12%  {                           transform: translateY(8px) rotate(-90deg); }
+  18%  { left: calc(100% + 80px);  transform: translateY(0) rotate(-90deg); }
+  100% { left: calc(100% + 80px);  transform: translateY(0) rotate(-90deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nuage { animation: none; }
+  .nuage:nth-child(1) { left: 6%; }
+  .nuage:nth-child(2) { left: 70%; }
+  .nuage:nth-child(3) { left: 40%; }
+  .nuage:nth-child(4) { left: 85%; }
+  .oiseau { display: none; }
 }
 
 /* bandeau défilant maison (pas de <marquee> déprécié) */
@@ -100,7 +132,7 @@ body {
   overflow: hidden;
   padding: 4px 0;
   background: var(--encre);
-  border-bottom: 3px solid var(--rose);
+  border-bottom: 3px solid #5ec8ff;
   font-family: var(--police-mono);
   font-size: 12px;
   font-weight: bold;
@@ -515,6 +547,9 @@ h3.titre-interne {
 
 @media (max-width: 820px) {
   body { padding: 6px 4px 30px; }
+
+  .banniere { min-height: 180px; }
+  .ciel .nuage { width: 90px; }
 
   .grille {
     grid-template-columns: minmax(0, 1fr);
