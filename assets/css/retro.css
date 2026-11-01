@@ -34,7 +34,7 @@ body {
   padding: 12px 8px 40px;
   font-family: var(--police-corps);
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.6;
   color: var(--encre);
   background: #d9609b url("../img/tuile-points.svg") repeat;
   background-size: 160px 160px;
@@ -49,7 +49,7 @@ body {
   margin: 0 auto;
   background: var(--charbon);
   border: 3px solid var(--encre);
-  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.45);
+  box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.55);
 }
 
 /* --------------------------------------------------------------------------
@@ -126,13 +126,13 @@ body {
 .grille {
   display: grid;
   grid-template-columns: 172px minmax(0, 1fr) 172px;
-  gap: 10px;
-  padding: 10px;
+  gap: 18px;
+  padding: 18px;
   align-items: start;
 }
 
-.rail { display: grid; gap: 10px; }
-.centre { display: grid; gap: 10px; min-width: 0; }
+.rail { display: grid; gap: 16px; }
+.centre { display: grid; gap: 22px; min-width: 0; }
 
 /* --------------------------------------------------------------------------
    Boîtes à barre de titre
@@ -164,28 +164,7 @@ body {
 
 .boite > h2 { font-size: 16px; }
 
-/* faux boutons de fenêtre */
-.boutons-fenetre {
-  display: flex;
-  gap: 3px;
-  flex: none;
-}
-
-.boutons-fenetre i {
-  width: 13px;
-  height: 12px;
-  font-style: normal;
-  font-family: var(--police-mono);
-  font-size: 9px;
-  line-height: 11px;
-  text-align: center;
-  color: var(--encre);
-  background: #c9c9c9;
-  border: 1px solid var(--encre);
-  box-shadow: inset -1px -1px 0 #7a7a7a, inset 1px 1px 0 #fff;
-}
-
-.contenu { padding: 10px; }
+.contenu { padding: 16px 18px; }
 .contenu > :first-child { margin-top: 0; }
 .contenu > :last-child { margin-bottom: 0; }
 
@@ -213,7 +192,7 @@ h3.titre-interne {
 
 .filet {
   height: 6px;
-  margin: 12px 0;
+  margin: 20px 0;
   border: 0;
   background: repeating-linear-gradient(90deg,
     var(--rose) 0 10px, var(--marine) 10px 20px);
@@ -231,8 +210,8 @@ h3.titre-interne {
 .faits {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
-  gap: 6px;
-  margin: 10px 0;
+  gap: 10px;
+  margin: 16px 0;
   padding: 0;
   list-style: none;
 }
@@ -261,12 +240,12 @@ h3.titre-interne {
 .categorie {
   display: grid;
   grid-template-columns: 96px minmax(0, 1fr);
-  gap: 10px;
+  gap: 14px;
   align-items: start;
-  padding: 10px;
+  padding: 14px;
   background: #fff;
   border: 2px dashed var(--rose);
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
 
 .categorie:last-child { margin-bottom: 0; }
@@ -354,7 +333,7 @@ h3.titre-interne {
    -------------------------------------------------------------------------- */
 
 .faq details {
-  margin-bottom: 6px;
+  margin-bottom: 10px;
   background: #fff;
   border: 2px solid var(--marine);
 }
