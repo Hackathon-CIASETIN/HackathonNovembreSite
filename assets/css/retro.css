@@ -19,7 +19,7 @@
   --vert-led:    #1aff5c;
   --jaune:       #ffc400;
 
-  --police-titre: Impact, 'Haettenschweiler', 'Arial Black', sans-serif;
+  --police-titre: 'Russo One', 'Arial Black', sans-serif;
   --police-corps: Verdana, Geneva, 'DejaVu Sans', sans-serif;
   --police-fun:   'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', cursive;
   --police-mono:  'Courier New', Courier, monospace;
@@ -157,13 +157,13 @@ body {
 
 .grille {
   display: grid;
-  grid-template-columns: 172px minmax(0, 1fr) 172px;
+  grid-template-columns: 190px minmax(0, 1fr) 190px;
   gap: 18px;
   padding: 18px;
   align-items: start;
 }
 
-.rail { display: grid; gap: 16px; }
+.rail { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
 .centre { display: grid; gap: 22px; min-width: 0; }
 
 /* --------------------------------------------------------------------------
@@ -183,10 +183,10 @@ body {
   justify-content: space-between;
   gap: 6px;
   margin: 0;
-  padding: 4px 6px;
+  padding: 8px 12px;
   font-family: var(--police-titre);
-  font-size: 13px;
-  letter-spacing: 1px;
+  font-size: 15px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: #fff;
   background: linear-gradient(180deg, var(--marine-clair) 0%, var(--marine) 100%);
@@ -194,7 +194,8 @@ body {
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.6);
 }
 
-.boite > h2 { font-size: 16px; }
+.boite > h2 { font-size: 20px; }
+.boite > h3 { letter-spacing: 1px; }
 
 .contenu { padding: 16px 18px; }
 .contenu > :first-child { margin-top: 0; }
