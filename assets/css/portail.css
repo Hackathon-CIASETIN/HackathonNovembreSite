@@ -1,0 +1,511 @@
+/* ==========================================================================
+   Buildathon ASETIN — monPortrail (parodie d'un portail universitaire)
+   Page autonome : ne charge pas retro.css.
+   Deux langages visuels volontairement mélangés :
+     - le portail lui-même, propre et moderne, mais vidé de son contenu ;
+     - le forum étudiant, resté dans son jus depuis 2009.
+   ========================================================================== */
+
+:root {
+	--mp-rouge: #9b1b2e;
+	--mp-rouge-fonce: #6e1221;
+	--mp-or: #e8b43a;
+	--mp-bleu: #1a5fa8;
+	--mp-bleu-fonce: #0f3f73;
+	--mp-encre: #22262b;
+	--mp-gris: #5d656e;
+	--mp-bord: #d7dbe0;
+	--mp-fond: #eef1f4;
+	--mp-sable: #f4f1e4;
+	--mp-sable-bord: #ddd6bd;
+	--mp-vert: #8aad58;
+	--mp-corps: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	--mp-serif: Georgia, "Times New Roman", serif;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	margin: 0;
+	font-family: var(--mp-corps);
+	font-size: 15px;
+	line-height: 1.55;
+	color: var(--mp-encre);
+	background: var(--mp-fond);
+}
+
+/* --------------------------------------------------------------------------
+   Barre du haut
+   -------------------------------------------------------------------------- */
+
+.liseré {
+	height: 6px;
+	background: linear-gradient(90deg,
+		var(--mp-rouge) 0%, var(--mp-rouge) 58%, var(--mp-or) 58%, var(--mp-or) 100%);
+}
+
+.entete {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	padding: 10px 20px;
+	background: #fff;
+	border-bottom: 1px solid var(--mp-bord);
+}
+
+.entete img {
+	width: 38px;
+	height: auto;
+}
+
+.marque {
+	display: flex;
+	align-items: baseline;
+	gap: 12px;
+	min-width: 0;
+}
+
+.marque .univ {
+	font-family: var(--mp-serif);
+	font-size: 15px;
+	letter-spacing: 1.5px;
+	text-transform: uppercase;
+	color: var(--mp-rouge);
+}
+
+.marque .produit {
+	font-size: 19px;
+	color: var(--mp-encre);
+}
+
+.marque .produit b {
+	font-weight: 600;
+}
+
+.icones {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	margin-left: auto;
+	color: var(--mp-gris);
+}
+
+.icones span {
+	position: relative;
+	font-size: 17px;
+	line-height: 1;
+}
+
+.icones .pastille {
+	position: absolute;
+	top: -6px;
+	right: -8px;
+	min-width: 15px;
+	padding: 0 4px;
+	font-family: var(--mp-corps);
+	font-size: 10px;
+	line-height: 15px;
+	text-align: center;
+	color: #fff;
+	background: #e07a1f;
+	border-radius: 8px;
+}
+
+.avatar {
+	width: 32px;
+	height: 32px;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 32px;
+	text-align: center;
+	color: #fff;
+	background: var(--mp-bleu);
+	border-radius: 50%;
+}
+
+/* --------------------------------------------------------------------------
+   Bandeau de migration
+   -------------------------------------------------------------------------- */
+
+.avis-migration {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 16px;
+	max-width: 1180px;
+	margin: 22px auto 0;
+	padding: 18px 22px;
+	background: #fff5e6;
+	border: 2px solid #e8a33a;
+	border-left: 10px solid #e8a33a;
+}
+
+.avis-migration .texte {
+	flex: 1 1 420px;
+	min-width: 0;
+}
+
+.avis-migration h1 {
+	margin: 0 0 6px;
+	font-size: 21px;
+	color: var(--mp-rouge-fonce);
+}
+
+.avis-migration p {
+	margin: 0;
+	font-size: 14.5px;
+	color: #6b5533;
+}
+
+.bouton-brilleau {
+	flex: none;
+	display: inline-block;
+	padding: 12px 20px;
+	font-size: 15px;
+	font-weight: 600;
+	text-decoration: none;
+	color: #fff;
+	background: var(--mp-bleu);
+	border-radius: 4px;
+}
+
+.bouton-brilleau:hover {
+	background: var(--mp-bleu-fonce);
+}
+
+/* --------------------------------------------------------------------------
+   Grille principale
+   -------------------------------------------------------------------------- */
+
+.conteneur {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 340px;
+	gap: 22px;
+	max-width: 1180px;
+	margin: 22px auto 60px;
+	padding: 0 20px;
+	align-items: start;
+}
+
+.carte {
+	background: #fff;
+	border: 1px solid var(--mp-bord);
+	border-radius: 4px;
+	margin-bottom: 22px;
+}
+
+.carte > h2 {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	margin: 0;
+	padding: 16px 20px;
+	font-size: 20px;
+	font-weight: 600;
+	border-bottom: 1px solid var(--mp-bord);
+}
+
+.carte .faux-select {
+	padding: 7px 12px;
+	font-size: 13px;
+	color: var(--mp-gris);
+	background: #fff;
+	border: 1px solid var(--mp-bord);
+	border-radius: 3px;
+}
+
+.carte .corps {
+	padding: 16px 20px;
+}
+
+/* liste de cours, tous désormais injoignables */
+.cours {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.cours li {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 4px 12px;
+	padding: 14px 0;
+	border-bottom: 1px solid #eceef1;
+}
+
+.cours li:last-child {
+	border-bottom: 0;
+}
+
+.cours .titre {
+	font-size: 17px;
+	color: #9aa3ad;
+	text-decoration: line-through;
+}
+
+.cours .sigle {
+	font-size: 13px;
+	color: #9aa3ad;
+}
+
+.cours .etiquette {
+	margin-left: auto;
+	padding: 3px 9px;
+	font-size: 11.5px;
+	font-weight: 600;
+	letter-spacing: 0.3px;
+	text-transform: uppercase;
+	color: #8a6a1f;
+	background: #fdf3dc;
+	border: 1px solid #e8cf93;
+	border-radius: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   Rail de droite
+   -------------------------------------------------------------------------- */
+
+.rail .carte > h2 {
+	font-size: 17px;
+}
+
+.message-important {
+	display: flex;
+	gap: 12px;
+	padding: 14px 0;
+	border-bottom: 1px solid #eceef1;
+}
+
+.message-important:last-child {
+	border-bottom: 0;
+}
+
+.message-important .puce {
+	flex: none;
+	width: 34px;
+	height: 34px;
+	font-size: 15px;
+	line-height: 34px;
+	text-align: center;
+	color: #fff;
+	background: var(--mp-bleu);
+	border-radius: 4px;
+}
+
+.message-important h3 {
+	margin: 0 0 2px;
+	font-size: 14.5px;
+	font-weight: 600;
+}
+
+.message-important .date {
+	display: block;
+	margin-bottom: 5px;
+	font-size: 12px;
+	color: #9aa3ad;
+}
+
+.message-important p {
+	margin: 0;
+	font-size: 13.5px;
+	color: var(--mp-gris);
+}
+
+/* --------------------------------------------------------------------------
+   Le forum étudiant — resté dans son jus depuis 2009
+   -------------------------------------------------------------------------- */
+
+.forum {
+	max-width: 1180px;
+	margin: 0 auto 60px;
+	padding: 0 20px;
+}
+
+.forum > h2 {
+	margin: 0 0 4px;
+	font-size: 22px;
+	font-weight: 600;
+}
+
+.forum .avertissement-forum {
+	margin: 0 0 18px;
+	font-size: 13.5px;
+	color: var(--mp-gris);
+}
+
+.sujet {
+	margin-bottom: 18px;
+	background: var(--mp-sable);
+	border: 1px solid var(--mp-sable-bord);
+}
+
+.sujet .message {
+	display: grid;
+	grid-template-columns: 150px minmax(0, 1fr);
+}
+
+.sujet .auteur {
+	padding: 12px 14px;
+	border-right: 1px solid var(--mp-sable-bord);
+}
+
+.sujet .auteur .nom {
+	display: block;
+	margin-bottom: 4px;
+	font-size: 13.5px;
+	font-weight: 600;
+	color: #7a6a3a;
+}
+
+.sujet .auteur .compte {
+	display: block;
+	font-size: 12px;
+	color: var(--mp-gris);
+}
+
+.sujet .auteur .courriel {
+	display: inline-block;
+	margin-top: 6px;
+	font-size: 12px;
+	color: var(--mp-bleu);
+	text-decoration: underline;
+}
+
+.sujet .contenu {
+	padding: 12px 14px;
+}
+
+.sujet .ligne-titre {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: 10px;
+	margin-bottom: 4px;
+}
+
+.sujet .ligne-titre h3 {
+	flex: 1 1 240px;
+	margin: 0;
+	font-size: 15px;
+	font-weight: 600;
+	color: var(--mp-encre);
+}
+
+.sujet .ligne-titre h3::before {
+	content: "\1F5E8\FE0F";
+	margin-right: 6px;
+	font-size: 13px;
+}
+
+.bouton-forum {
+	flex: none;
+	padding: 7px 14px;
+	font-size: 13px;
+	color: #3f4a2a;
+	background: linear-gradient(180deg, #d9e8bd 0%, #bcd396 100%);
+	border: 1px solid #9bb673;
+	border-radius: 3px;
+}
+
+.sujet .publie {
+	margin: 0 0 10px;
+	font-size: 12.5px;
+	font-style: italic;
+	color: var(--mp-gris);
+}
+
+.sujet .texte p {
+	margin: 0 0 9px;
+	font-size: 14px;
+	color: #1f4e7a;
+}
+
+.sujet .texte p:last-child {
+	margin-bottom: 0;
+}
+
+/* réponse imbriquée */
+.sujet .reponse {
+	border-top: 1px solid var(--mp-sable-bord);
+	background: #fff;
+}
+
+.sujet .reponse .contenu {
+	border-left: 3px solid #7fb0dd;
+}
+
+/* --------------------------------------------------------------------------
+   Pied de page
+   -------------------------------------------------------------------------- */
+
+.pied-portail {
+	padding: 22px 20px 40px;
+	text-align: center;
+	font-size: 12.5px;
+	color: var(--mp-gris);
+	background: #e4e8ed;
+	border-top: 1px solid var(--mp-bord);
+}
+
+.pied-portail a {
+	color: var(--mp-bleu);
+}
+
+.pied-portail p {
+	max-width: 860px;
+	margin: 6px auto;
+}
+
+.retour-buildathon {
+	display: inline-block;
+	margin-top: 12px;
+	padding: 9px 16px;
+	font-size: 13.5px;
+	text-decoration: none;
+	color: #fff;
+	background: var(--mp-rouge);
+	border-radius: 4px;
+}
+
+:where(a, button):focus-visible {
+	outline: 3px solid var(--mp-or);
+	outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+	.conteneur {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+@media (max-width: 600px) {
+	.entete {
+		flex-wrap: wrap;
+	}
+
+	.marque {
+		flex-direction: column;
+		gap: 0;
+	}
+
+	.sujet .message {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.sujet .auteur {
+		border-right: 0;
+		border-bottom: 1px solid var(--mp-sable-bord);
+	}
+}

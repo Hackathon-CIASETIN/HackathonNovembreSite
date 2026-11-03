@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brilleau — Université Lavallée</title>
+<meta name="description" content="Défi Éducation du Buildathon ASETIN. Brilleau est une plateforme parodique entièrement fictive.">
+<link rel="stylesheet" href="assets/css/brilleau.css">
+<link rel="stylesheet" href="assets/css/clavardage.css">
+<link rel="icon" href="assets/img/bouton-88x31.svg">
+</head>
+<body>
+
+<!-- ================= ÉCRAN DE CONNEXION (à chaque visite) ================= -->
+<div class="ecran-connexion" id="ecran-connexion">
+  <div class="boite-connexion">
+    <img src="assets/img/brilleau-logo.svg" alt="Brilleau">
+    <h1>Bonjour Alex&nbsp;!</h1>
+    <p class="deja">Vous êtes déjà authentifié. Veuillez vous connecter pour continuer.</p>
+    <p>
+      Votre session précédente a été fermée pour des raisons de sécurité
+      que nous ne sommes pas en mesure de préciser.
+    </p>
+    <p>
+      <button class="btn-connexion" type="button" id="btn-connexion">Connexion</button>
+    </p>
+    <p class="compteur-sessions" id="compteur-sessions"></p>
+  </div>
+</div>
+
+<!-- ================= L'APPLICATION ================= -->
+<div class="app" id="app" hidden>
+
+  <nav class="lateral" aria-label="Navigation du cours">
+    <div class="entete-lat">
+      <span class="sur">Brilleau</span>
+      <span class="etab">Université Lavallée</span>
+    </div>
+    <ul class="menu-lat" id="menu-lat">
+      <li>
+        <button type="button" data-cible="generaux" data-comportement="chargement"
+                data-libelle="Renseignements généraux">Renseignements généraux</button>
+      </li>
+      <li>
+        <button type="button" data-cible="contenu" data-comportement="chargement"
+                data-libelle="Contenu et activités">Contenu et activités</button>
+      </li>
+      <li>
+        <button type="button" data-cible="evaluations" data-comportement="session"
+                data-libelle="Évaluations">Évaluations</button>
+      </li>
+      <li>
+        <button type="button" data-cible="resultats" data-comportement="erreur"
+                data-libelle="Résultats">Résultats</button>
+      </li>
+      <li>
+        <button type="button" data-cible="bulletin" data-comportement="ok"
+                data-libelle="Bulletin de la migration" aria-current="true">
+          Bulletin de la migration
+          <span class="point" aria-hidden="true"></span>
+        </button>
+      </li>
+      <li>
+        <button type="button" data-cible="personnes" data-comportement="mauvaise-page"
+                data-libelle="Personnes inscrites">Personnes inscrites</button>
+      </li>
+    </ul>
+    <p class="pied-lat">
+      Faculté des sciences appliquées<br>
+      Département d'informatique et de génie logiciel
+    </p>
+  </nav>
+
+  <main class="principal">
+    <header class="entete-cours">
+      <div>
+        <h1>Écosystèmes appliqués</h1>
+        <p class="sous">Automne 2026 | ECO-2040 (Groupe&nbsp;: 40127)</p>
+      </div>
+      <div class="droite">
+        <span aria-hidden="true">🔔</span>
+        <span class="avatar"><i>AL</i><span>Alex</span></span>
+      </div>
+    </header>
+
+    <div class="contenu-principal">
+
+      <!-- ---------- LE SEUL PANNEAU QUI FONCTIONNE ---------- -->
+      <section class="panneau bulletin" id="panneau-bulletin">
+        <p class="fil">Brilleau · Communications</p>
+        <h2>Bulletin de la migration — n<sup>o</sup> 7</h2>
+
+        <div class="entete-bulletin">
+          <p>
+            Publié par l'équipe Brilleau · Diffusé à 41 000 personnes ·
+            Taux d'ouverture&nbsp;: 3&nbsp;% (les autres n'ont pas réussi à se connecter)
+          </p>
+        </div>
+
+        <p>Chères étudiantes, chers étudiants, chers membres du corps enseignant,</p>
+
+        <p class="aveu">
+          Soyons honnêtes&nbsp;: nous sommes technologiquement en retard.
+          Très en retard. <strong>Nous sommes fiers d'être à la fine pointe de 2009.</strong>
+        </p>
+
+        <h3>Où en est la migration</h3>
+
+        <p>
+          La migration de monPortrail vers Brilleau suit son cours. La phase&nbsp;7
+          est complétée à 40&nbsp;%, la phase&nbsp;6 à 12&nbsp;%, et les phases&nbsp;1
+          à&nbsp;5 ont été annulées en août pour des raisons budgétaires. La
+          phase&nbsp;8 a été lancée en parallèle afin de rattraper le retard des
+          phases précédentes.
+        </p>
+
+        <h3>Ce qui ne fonctionne pas actuellement</h3>
+
+        <ul>
+          <li>Les dates de remise, qui s'affichent à quatre endroits différents, ou nulle part.</li>
+          <li>La liste des personnes inscrites, vide pour tout le monde sauf le personnel enseignant.</li>
+          <li>Le téléchargement groupé des documents, qui n'a jamais existé.</li>
+          <li>La session, qui se ferme toute seule et que nous n'arrivons pas à garder ouverte.</li>
+          <li>Les résultats, qui existent dans trois systèmes qui ne s'entendent pas.</li>
+          <li>Ce bulletin, qui est la seule page de Brilleau qui se charge de façon fiable.</li>
+        </ul>
+
+        <h3>Ce dont nous avons besoin</h3>
+
+        <p>
+          Nous avons demandé un budget. On nous a répondu de consulter le site du
+          cours. Le site du cours est sur Brilleau.
+        </p>
+
+        <p>
+          Nous nous tournons donc vers vous. Si vous êtes capables de construire,
+          en une journée, quelque chose de plus utile que ce que nous avons livré
+          en trois ans, nous sommes preneurs. Nous ne serons pas vexés. Nous n'avons
+          plus l'énergie d'être vexés.
+        </p>
+
+        <div class="mandat">
+          <h3>Votre mandat</h3>
+          <p>
+            Construisez un outil pour le monde de l'éducation&nbsp;: pour les
+            étudiantes et étudiants, pour le personnel enseignant, ou pour
+            l'administration. Un outil qui règle un vrai irritant de la vie
+            scolaire. Si vous cherchez des idées, le forum étudiant de monPortrail
+            est encore en ligne, et les gens y sont très bavards.
+          </p>
+        </div>
+
+        <p>
+          Nous ne vous dirons pas de quel côté vous ranger. Certains voudront aider
+          les établissements à mieux encadrer leurs examens. D'autres voudront
+          démontrer à quel point cet encadrement est facile à contourner. Les deux
+          nous intéressent, et les deux nous inquiètent.
+        </p>
+
+        <p class="signature">
+          L'équipe Brilleau<br>
+          <em>Pour nous joindre, veuillez utiliser le formulaire disponible sur le
+          site du cours.</em>
+        </p>
+
+        <p>
+          <a class="retour-buildathon" href="ecole.html">◄ Retour à monPortrail</a>
+          <a class="retour-buildathon" href="index.html" style="background:#5c6873">Retour au Buildathon</a>
+        </p>
+      </section>
+
+      <!-- ---------- CHARGEMENT SANS FIN ---------- -->
+      <section class="panneau" id="panneau-chargement" hidden>
+        <div class="chargement">
+          <div class="roue" role="status" aria-live="polite"></div>
+          <p id="texte-chargement">Chargement…</p>
+          <p class="note">
+            Si le chargement persiste, essayez de rafraîchir la page, de vous
+            reconnecter, ou de revenir en janvier.
+          </p>
+        </div>
+      </section>
+
+      <!-- ---------- ERREUR ---------- -->
+      <section class="panneau" id="panneau-erreur" hidden>
+        <div class="erreur">
+          <p class="code">503</p>
+          <h3>Ce service est temporairement indisponible</h3>
+          <p>
+            Cette section n'a pas encore été migrée, ou a été migrée puis
+            démigrée. Veuillez consulter le site du cours pour plus d'information.
+          </p>
+        </div>
+      </section>
+
+    </div>
+
+    <footer class="mention-parodie">
+      <p>
+        <strong>Brilleau</strong>, <strong>monPortrail</strong> et l'<strong>Université
+        Lavallée</strong> sont des parodies entièrement fictives, créées pour le
+        Buildathon de l'ASETIN. Aucune affiliation avec un établissement ou une
+        plateforme réels. Les personnes, les cours et les communications présentés
+        ici sont inventés.
+      </p>
+    </footer>
+  </main>
+
+</div>
+
+<!-- ================= SESSION EXPIRÉE ================= -->
+<div class="voile" id="voile-session" hidden>
+  <div class="modale" role="dialog" aria-modal="true" aria-labelledby="titre-session">
+    <h3 id="titre-session">Session expirée</h3>
+    <p>
+      Votre session a expiré en raison d'une période d'inactivité.
+      Vos modifications non enregistrées ont été conservées quelque part.
+    </p>
+    <button class="btn-connexion" type="button" id="btn-reconnexion">Se reconnecter</button>
+  </div>
+</div>
+
+<script src="assets/js/brilleau.js"></script>
+<script src="assets/js/clavardage.js"></script>
+</body>
+</html>
