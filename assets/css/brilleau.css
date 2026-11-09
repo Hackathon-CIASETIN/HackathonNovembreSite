@@ -404,8 +404,12 @@ body {
 }
 
 .bulletin .mandat p {
-	margin: 0;
+	margin: 0 0 11px;
 	color: #dce9f7;
+}
+
+.bulletin .mandat p:last-child {
+	margin-bottom: 0;
 }
 
 .signature {
@@ -503,6 +507,56 @@ body {
 
 	.contenu-principal {
 		padding: 22px 18px 50px;
+	}
+}
+
+@media (max-width: 560px) {
+	body {
+		font-size: 14.5px;
+	}
+
+	.boite-connexion img {
+		width: 150px;
+		margin-bottom: 18px;
+	}
+
+	.boite-connexion h1 {
+		font-size: 20px;
+	}
+
+	.ecran-connexion {
+		padding: 16px;
+	}
+
+	.entete-cours {
+		flex-wrap: wrap;
+		gap: 10px;
+		padding: 13px 15px;
+	}
+
+	.entete-cours h1 {
+		font-size: 18px;
+	}
+
+	.entete-cours .sous {
+		font-size: 12.5px;
+	}
+
+	.menu-lat button {
+		padding: 12px 15px;
+		font-size: 14.5px;
+	}
+
+	.contenu-principal {
+		padding: 16px 13px 44px;
+	}
+
+	.bulletin .mandat {
+		padding: 14px 15px;
+	}
+
+	.bulletin h2 {
+		font-size: 19px;
 	}
 }
 

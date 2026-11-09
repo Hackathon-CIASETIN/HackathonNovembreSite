@@ -369,8 +369,31 @@ body {
 }
 
 @media (max-width: 560px) {
+  body { padding: 12px 6px 46px; }
+  .rouleau { box-shadow: 0 0 0 1px #0c0c0f, 6px 8px 20px rgba(0, 0, 0, 0.6); }
   .feuillet { padding: 0 22px; }
   .ligne-transmission { margin: 0 -22px 16px; padding: 4px 22px; font-size: 9.5px; }
+  .bloc-entete { padding: 11px 12px; font-size: 12.5px; line-height: 1.6; }
   .bloc-entete dl { grid-template-columns: minmax(0, 1fr); }
   .bloc-entete dt { margin-top: 6px; }
+  .rouleau h2 { margin-top: 24px; font-size: 13.5px; }
+  .deux-colonnes { gap: 0; }
+
+  /* les boutons passent pleine largeur : plus faciles à viser au pouce */
+  .actions { padding: 0 6px; gap: 8px; }
+  .actions > .btn { flex: 1 1 100%; text-align: center; }
+  .actions > span { display: flex; flex: 1 1 100%; gap: 8px; }
+  .actions > span .btn { flex: 1 1 0; text-align: center; padding: 11px 8px; }
+
+  .dialogue .corps { padding: 13px 11px 8px; }
+  .dialogue .icone { font-size: 24px; }
+  .dialogue button { min-width: 0; flex: 1 1 0; padding: 9px 10px; }
+}
+
+@media (max-width: 400px) {
+  .feuillet { padding: 0 15px; }
+  .ligne-transmission { margin: 0 -15px 14px; padding: 4px 15px; font-size: 8.5px; }
+  .signature, .mandat { font-size: 12px; }
+  .actions > span { flex-wrap: wrap; }
+  .actions > span .btn { flex: 1 1 100%; }
 }

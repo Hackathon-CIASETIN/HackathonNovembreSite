@@ -526,9 +526,36 @@ body {
 	outline-offset: 2px;
 }
 
+@media (max-width: 560px) {
+	body {
+		padding: 10px 7px 36px;
+		font-size: 14px;
+	}
+
+	.cadre {
+		padding: 11px;
+		border-width: 5px;
+		outline-offset: 3px;
+	}
+
+	.grille-produits {
+		padding: 7px;
+		gap: 8px;
+	}
+
+	.avertissement {
+		padding: 8px 10px;
+	}
+}
+
 @media (max-width: 480px) {
 	.agrandir-fermer {
 		top: -14px;
 		right: -8px;
+	}
+
+	.cadre {
+		border-width: 4px;
+		outline-width: 2px;
 	}
 }

@@ -508,4 +508,47 @@ body {
 		border-right: 0;
 		border-bottom: 1px solid var(--mp-sable-bord);
 	}
+
+	body {
+		font-size: 14px;
+	}
+
+	.entete {
+		padding: 9px 13px;
+		gap: 10px;
+	}
+
+	.entete img {
+		width: 30px;
+	}
+
+	.marque .produit {
+		font-size: 17px;
+	}
+
+	.icones {
+		gap: 12px;
+	}
+
+	.conteneur {
+		gap: 16px;
+		margin: 16px auto 44px;
+		padding: 0 11px;
+	}
+
+	.avis-migration {
+		gap: 12px;
+		margin: 14px 11px 0;
+		padding: 14px 15px;
+	}
+
+	.carte > h2 {
+		flex-wrap: wrap;
+		padding: 13px 15px;
+		font-size: 18px;
+	}
+
+	.carte .corps {
+		padding: 13px 15px;
+	}
 }

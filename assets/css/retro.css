@@ -758,9 +758,20 @@ h3.titre-interne {
    Responsive — les rails passent sous la colonne centrale
    -------------------------------------------------------------------------- */
 
-@media (max-width: 820px) {
+/* Indications de direction : « colonne de droite » n'a aucun sens sur un
+   téléphone, où tout est empilé. On change le mot, pas la mise en page. */
+.si-etroit {
+	display: none;
+}
+
+/* ----- Tablette : les rails passent sous la colonne centrale ----- */
+@media (max-width: 900px) {
 	body {
 		padding: 6px 4px 30px;
+	}
+
+	.page {
+		box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.5);
 	}
 
 	.banniere {
@@ -772,11 +783,11 @@ h3.titre-interne {
 
 	.grille {
 		grid-template-columns: minmax(0, 1fr);
-		gap: 8px;
-		padding: 8px;
+		gap: 10px;
+		padding: 10px;
 	}
 
-	/* l'événement d'abord, puis la pub IGEA, puis la navigation */
+	/* le contenu d'abord, les rails ensuite */
 	.centre {
 		order: 0;
 	}
@@ -788,21 +799,216 @@ h3.titre-interne {
 	}
 
 	.rail {
-		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 		align-items: start;
 	}
 
-	.categorie {
-		grid-template-columns: 72px minmax(0, 1fr);
+	/* les publicités gardent toute la largeur et montent en tête de leur rail :
+	   ce sont elles qui mènent aux défis. */
+	.rail .boite:has(.pub) {
+		grid-column: 1 / -1;
+		order: -1;
+	}
+
+	.si-large {
+		display: none;
+	}
+	.si-etroit {
+		display: inline;
 	}
 }
 
-@media (max-width: 420px) {
+/* ----- Téléphone : la colonne centrale domine, le reste s'efface ----- */
+@media (max-width: 620px) {
+	/* le fond à pois reste présent, mais en retrait : motif plus petit,
+	   contraste adouci par un voile de la même couleur. */
+	body {
+		/* une marge visible : le motif doit rester perceptible, sans dominer */
+		padding: 10px 9px 30px;
+		background-image:
+			linear-gradient(rgba(235, 150, 191, 0.58), rgba(235, 150, 191, 0.58)),
+			url("../img/tuile-points.svg");
+		background-repeat: no-repeat, repeat;
+		background-size:
+			100% 100%,
+			104px 104px;
+		background-attachment: fixed, scroll;
+	}
+
+	.page {
+		border-width: 2px;
+		box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.45);
+	}
+
+	.banniere {
+		min-height: 132px;
+		padding: 14px 10px 12px;
+	}
+	.ciel .nuage {
+		width: 64px;
+	}
+	.oiseau {
+		width: 40px;
+	}
+
+	.defilant {
+		font-size: 11px;
+	}
+
+	.grille {
+		gap: 12px;
+		padding: 8px;
+	}
+
+	/* --- mise en avant de la colonne centrale --- */
+	.centre {
+		gap: 14px;
+		font-size: 14px;
+	}
+
+	.centre .boite {
+		border-width: 3px;
+	}
+
+	.centre .boite > h2 {
+		font-size: 17px;
+		letter-spacing: 1px;
+		padding: 9px 12px;
+	}
+
+	.centre .contenu {
+		padding: 14px 13px;
+	}
+
+	/* --- mise en retrait des rails --- */
+	.rail {
+		grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+		gap: 10px;
+		font-size: 11.5px;
+	}
+
+	.rail .boite > h3 {
+		font-size: 12px;
+		letter-spacing: 0.5px;
+		padding: 6px 9px;
+	}
+
+	.rail .contenu {
+		padding: 10px 11px;
+	}
+
+	.rail .petit {
+		font-size: 10px;
+	}
+
+	/* cibles tactiles plus généreuses */
+	.menu a {
+		padding: 9px 8px;
+	}
+
+	.faq summary {
+		padding: 10px 10px;
+	}
+
+	.faq .reponse {
+		padding: 10px;
+	}
+
+	.bouton-geant {
+		font-size: 18px;
+		padding: 14px 12px;
+	}
+
+	.faits {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 8px;
+	}
+
+	.faits b {
+		font-size: 16px;
+	}
+
+	.categorie {
+		grid-template-columns: 76px minmax(0, 1fr);
+		gap: 11px;
+		padding: 11px;
+	}
+
+	.categorie h4 {
+		font-size: 16px;
+	}
+
+	/* L'horaire devient une suite de fiches : un tableau à trois colonnes
+	   est illisible sous 400 px. */
+	.horaire,
+	.horaire tbody,
+	.horaire tr,
+	.horaire td {
+		display: block;
+		width: 100%;
+	}
+
+	.horaire thead {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip-path: inset(50%);
+		white-space: nowrap;
+	}
+
+	.horaire tr {
+		margin-bottom: 8px;
+		padding: 8px 10px;
+		border: 2px solid var(--marine);
+	}
+
+	.horaire tr:last-child {
+		margin-bottom: 0;
+	}
+
+	.horaire td {
+		padding: 1px 0;
+		border: 0;
+	}
+
+	.horaire td:first-child {
+		font-size: 14px;
+		color: var(--rose-fonce);
+	}
+
+	.horaire td:nth-child(2) {
+		font-family: var(--police-titre);
+		font-size: 12px;
+		letter-spacing: 0.5px;
+		text-transform: uppercase;
+		color: var(--marine);
+	}
+
+	.horaire td:nth-child(3) {
+		font-size: 12.5px;
+	}
+}
+
+/* ----- Très petits écrans (sous 345 px, le deux-colonnes casse) ----- */
+@media (max-width: 345px) {
 	.categorie {
 		grid-template-columns: minmax(0, 1fr);
 	}
 	.categorie img {
 		width: 84px;
+	}
+
+	.faits {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.rail {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.bouton-geant {
+		font-size: 16px;
 	}
 }
 
@@ -815,4 +1021,92 @@ h3.titre-interne {
 	.pied {
 		display: none;
 	}
+}
+
+/* --------------------------------------------------------------------------
+   Publicité du commanditaire réel (Bell) — rétro, mais vrai lien sortant
+   -------------------------------------------------------------------------- */
+
+.pub--reelle {
+  background: #fff;
+  border: 3px ridge #1a6fc4;
+  text-decoration: none;
+}
+
+.pub--reelle:hover {
+  background: #eef6ff;
+}
+
+.mot-bell {
+  display: block;
+  font-family: var(--police-titre);
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  color: #0a66c2;
+}
+
+.accroche-reelle {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--police-corps);
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--encre);
+}
+
+.appel-reelle {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--police-mono);
+  font-size: 11px;
+  font-weight: bold;
+  color: #0a66c2;
+}
+
+/* --------------------------------------------------------------------------
+   Publicité large, pour la colonne centrale
+   -------------------------------------------------------------------------- */
+
+.pub--centre {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  text-align: left;
+}
+
+.pub--centre img {
+  margin: 0;
+  max-width: 200px;
+}
+
+.pub--centre .bloc-texte {
+  display: block;
+}
+
+.pub--centre .accroche {
+  font-size: 14px;
+}
+
+.pub--centre .appel {
+  margin-top: 8px;
+  font-size: 12.5px;
+}
+
+@media (max-width: 620px) {
+  .pub--centre {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    text-align: center;
+  }
+
+  .pub--centre img {
+    margin: 0 auto;
+  }
+
+  .pub--centre .accroche {
+    font-size: 13px;
+  }
 }
