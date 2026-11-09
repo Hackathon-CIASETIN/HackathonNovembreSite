@@ -1,0 +1,567 @@
+/* ==========================================================================
+   Buildathon ASETIN — Brilleau (plateforme fictive, volontairement dysfonctionnelle)
+   Page autonome : ne charge pas retro.css.
+   L'interface est propre et moderne ; c'est le comportement qui est cassé.
+   ========================================================================== */
+
+:root {
+	--br-marine: #0d2f57;
+	--br-marine-2: #15406f;
+	--br-bleu: #1a73c7;
+	--br-bleu-fonce: #0d4a8f;
+	--br-jaune: #f2b705;
+	--br-rouge: #e23c2e;
+	--br-encre: #1f2933;
+	--br-gris: #5c6873;
+	--br-bord: #dce2e8;
+	--br-fond: #f1f4f7;
+	--br-corps: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	margin: 0;
+	font-family: var(--br-corps);
+	font-size: 15px;
+	line-height: 1.6;
+	color: var(--br-encre);
+	background: var(--br-fond);
+}
+
+/* --------------------------------------------------------------------------
+   Écran de connexion — obligatoire à chaque visite
+   -------------------------------------------------------------------------- */
+
+.ecran-connexion {
+	position: fixed;
+	inset: 0;
+	z-index: 500;
+	display: grid;
+	place-items: center;
+	padding: 20px;
+	background: #fff;
+}
+
+.ecran-connexion[hidden] {
+	display: none;
+}
+
+.boite-connexion {
+	width: min(440px, 100%);
+	text-align: center;
+}
+
+.boite-connexion img {
+	width: 190px;
+	height: auto;
+	margin-bottom: 26px;
+}
+
+.boite-connexion h1 {
+	margin: 0 0 10px;
+	font-size: 23px;
+	font-weight: 600;
+}
+
+.boite-connexion p {
+	margin: 0 0 8px;
+	font-size: 14.5px;
+	color: var(--br-gris);
+}
+
+.boite-connexion .deja {
+	display: inline-block;
+	margin-bottom: 22px;
+	padding: 9px 14px;
+	font-size: 13.5px;
+	color: #6b5533;
+	background: #fff6e2;
+	border: 1px solid #e8cf93;
+	border-radius: 4px;
+}
+
+.btn-connexion {
+	display: inline-block;
+	padding: 13px 44px;
+	font-family: var(--br-corps);
+	font-size: 16px;
+	font-weight: 600;
+	cursor: pointer;
+	color: #fff;
+	background: var(--br-bleu);
+	border: 0;
+	border-radius: 4px;
+}
+
+.btn-connexion:hover {
+	background: var(--br-bleu-fonce);
+}
+
+.boite-connexion .compteur-sessions {
+	margin-top: 18px;
+	font-size: 12.5px;
+	color: #9aa3ad;
+}
+
+/* --------------------------------------------------------------------------
+   Coquille de l'application
+   -------------------------------------------------------------------------- */
+
+.app[hidden] {
+	display: none;
+}
+
+.app {
+	display: grid;
+	grid-template-columns: 290px minmax(0, 1fr);
+	min-height: 100vh;
+}
+
+/* ---- barre latérale ---- */
+
+.lateral {
+	background: var(--br-marine);
+	color: #fff;
+	padding-bottom: 30px;
+}
+
+.lateral .entete-lat {
+	padding: 18px 20px;
+	background: var(--br-marine-2);
+}
+
+.lateral .entete-lat .sur {
+	display: block;
+	font-size: 11px;
+	letter-spacing: 1.2px;
+	text-transform: uppercase;
+	color: #9fc4ec;
+}
+
+.lateral .entete-lat .etab {
+	font-size: 17px;
+	font-weight: 600;
+}
+
+.menu-lat {
+	margin: 14px 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.menu-lat li {
+	margin: 0;
+}
+
+.menu-lat button {
+	display: flex;
+	align-items: center;
+	gap: 9px;
+	width: 100%;
+	padding: 12px 20px;
+	font-family: var(--br-corps);
+	font-size: 15px;
+	text-align: left;
+	cursor: pointer;
+	color: #dce9f7;
+	background: none;
+	border: 0;
+	border-left: 4px solid transparent;
+}
+
+.menu-lat button:hover {
+	background: rgba(255, 255, 255, 0.07);
+}
+
+.menu-lat button[aria-current="true"] {
+	font-weight: 600;
+	color: #fff;
+	background: rgba(255, 255, 255, 0.09);
+	border-left-color: var(--br-jaune);
+}
+
+.menu-lat .point {
+	width: 8px;
+	height: 8px;
+	margin-left: auto;
+	background: var(--br-jaune);
+	border-radius: 50%;
+}
+
+.lateral .pied-lat {
+	margin-top: 26px;
+	padding: 0 20px;
+	font-size: 12px;
+	line-height: 1.45;
+	color: #8fb0d4;
+}
+
+/* ---- zone principale ---- */
+
+.principal {
+	background: #fff;
+}
+
+.entete-cours {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding: 16px 28px;
+	border-bottom: 1px solid var(--br-bord);
+}
+
+.entete-cours h1 {
+	margin: 0;
+	font-size: 21px;
+	font-weight: 600;
+}
+
+.entete-cours .sous {
+	margin: 2px 0 0;
+	font-size: 13.5px;
+	color: var(--br-gris);
+}
+
+.entete-cours .droite {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	margin-left: auto;
+}
+
+.entete-cours .avatar {
+	display: flex;
+	align-items: center;
+	gap: 9px;
+	padding: 5px 14px 5px 5px;
+	background: #eef2f6;
+	border-radius: 20px;
+}
+
+.entete-cours .avatar i {
+	width: 30px;
+	height: 30px;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 30px;
+	text-align: center;
+	color: #fff;
+	background: var(--br-bleu);
+	border-radius: 50%;
+}
+
+.entete-cours .avatar span {
+	font-size: 14px;
+	color: var(--br-bleu-fonce);
+}
+
+.contenu-principal {
+	padding: 30px 28px 60px;
+	max-width: 1000px;
+}
+
+/* --------------------------------------------------------------------------
+   Panneaux (un seul fonctionne)
+   -------------------------------------------------------------------------- */
+
+.panneau[hidden] {
+	display: none;
+}
+
+.panneau .fil {
+	margin: 0 0 6px;
+	font-size: 12px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	color: var(--br-gris);
+}
+
+.panneau h2 {
+	margin: 0 0 18px;
+	font-size: 28px;
+	font-weight: 600;
+}
+
+/* chargement sans fin */
+.chargement {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 16px;
+	padding: 70px 20px;
+	text-align: center;
+	color: var(--br-gris);
+}
+
+.roue {
+	width: 42px;
+	height: 42px;
+	border: 4px solid #dce2e8;
+	border-top-color: var(--br-bleu);
+	border-radius: 50%;
+	animation: br-tourne 0.9s linear infinite;
+}
+
+@keyframes br-tourne {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.chargement .note {
+	font-size: 13px;
+	color: #9aa3ad;
+}
+
+/* page d'erreur */
+.erreur {
+	padding: 40px 24px;
+	text-align: center;
+}
+
+.erreur .code {
+	font-size: 54px;
+	font-weight: 700;
+	color: var(--br-bord);
+}
+
+.erreur h3 {
+	margin: 6px 0 10px;
+	font-size: 20px;
+}
+
+.erreur p {
+	margin: 0 auto;
+	max-width: 520px;
+	color: var(--br-gris);
+}
+
+/* --------------------------------------------------------------------------
+   Le bulletin — la seule page qui marche
+   -------------------------------------------------------------------------- */
+
+.bulletin .entete-bulletin {
+	padding: 20px 24px;
+	margin-bottom: 24px;
+	background: #eaf3fc;
+	border-left: 6px solid var(--br-bleu);
+}
+
+.bulletin .entete-bulletin p {
+	margin: 0;
+	font-size: 14px;
+	color: #2d5478;
+}
+
+.bulletin h3 {
+	margin: 26px 0 8px;
+	font-size: 18px;
+	font-weight: 600;
+	color: var(--br-bleu-fonce);
+}
+
+.bulletin p {
+	margin: 0 0 12px;
+}
+
+.bulletin ul {
+	margin: 0 0 14px;
+	padding-left: 24px;
+}
+
+.bulletin li {
+	margin-bottom: 8px;
+}
+
+.bulletin .aveu {
+	padding: 16px 20px;
+	margin: 20px 0;
+	font-size: 16px;
+	background: #fff6e2;
+	border: 1px solid #e8cf93;
+	border-radius: 4px;
+}
+
+.bulletin .mandat {
+	padding: 20px 24px;
+	margin: 22px 0;
+	background: var(--br-marine);
+	color: #fff;
+	border-radius: 4px;
+}
+
+.bulletin .mandat h3 {
+	margin: 0 0 8px;
+	color: var(--br-jaune);
+}
+
+.bulletin .mandat p {
+	margin: 0 0 11px;
+	color: #dce9f7;
+}
+
+.bulletin .mandat p:last-child {
+	margin-bottom: 0;
+}
+
+.signature {
+	margin-top: 26px;
+	padding-top: 16px;
+	font-size: 13.5px;
+	color: var(--br-gris);
+	border-top: 1px solid var(--br-bord);
+}
+
+.retour-buildathon {
+	display: inline-block;
+	margin-top: 22px;
+	padding: 10px 18px;
+	font-size: 14px;
+	text-decoration: none;
+	color: #fff;
+	background: var(--br-bleu);
+	border-radius: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   Fenêtre « session expirée »
+   -------------------------------------------------------------------------- */
+
+.voile {
+	position: fixed;
+	inset: 0;
+	z-index: 400;
+	display: grid;
+	place-items: center;
+	padding: 20px;
+	background: rgba(15, 30, 50, 0.55);
+}
+
+.voile[hidden] {
+	display: none;
+}
+
+.modale {
+	width: min(420px, 100%);
+	padding: 26px 26px 22px;
+	text-align: center;
+	background: #fff;
+	border-radius: 6px;
+	box-shadow: 0 14px 40px rgba(0, 0, 0, 0.3);
+}
+
+.modale h3 {
+	margin: 0 0 10px;
+	font-size: 19px;
+}
+
+.modale p {
+	margin: 0 0 20px;
+	font-size: 14.5px;
+	color: var(--br-gris);
+}
+
+:where(a, button):focus-visible {
+	outline: 3px solid var(--br-jaune);
+	outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Pied de page
+   -------------------------------------------------------------------------- */
+
+.mention-parodie {
+	padding: 22px 28px 40px;
+	font-size: 12.5px;
+	line-height: 1.5;
+	color: var(--br-gris);
+	background: #e8edf2;
+	border-top: 1px solid var(--br-bord);
+}
+
+.mention-parodie p {
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 860px) {
+	.app {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.lateral {
+		padding-bottom: 14px;
+	}
+
+	.contenu-principal {
+		padding: 22px 18px 50px;
+	}
+}
+
+@media (max-width: 560px) {
+	body {
+		font-size: 14.5px;
+	}
+
+	.boite-connexion img {
+		width: 150px;
+		margin-bottom: 18px;
+	}
+
+	.boite-connexion h1 {
+		font-size: 20px;
+	}
+
+	.ecran-connexion {
+		padding: 16px;
+	}
+
+	.entete-cours {
+		flex-wrap: wrap;
+		gap: 10px;
+		padding: 13px 15px;
+	}
+
+	.entete-cours h1 {
+		font-size: 18px;
+	}
+
+	.entete-cours .sous {
+		font-size: 12.5px;
+	}
+
+	.menu-lat button {
+		padding: 12px 15px;
+		font-size: 14.5px;
+	}
+
+	.contenu-principal {
+		padding: 16px 13px 44px;
+	}
+
+	.bulletin .mandat {
+		padding: 14px 15px;
+	}
+
+	.bulletin h2 {
+		font-size: 19px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.roue {
+		animation: none;
+	}
+}
