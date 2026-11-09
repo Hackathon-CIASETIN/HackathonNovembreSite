@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Buildathon ASETIN — page « Jeux vidéo », présentée par ATARDI
+   Buildathon ASETIN — page « Jeux vidéo », présentée par ATURDI
    Thème volontairement amateur : fond en tuile mal fichue, Comic Sans,
    texte arc-en-ciel, séparateurs en coeurs, biseaux criards.
    Cette feuille est autonome : jeux.html ne charge PAS retro.css.
@@ -52,7 +52,7 @@ body {
 	padding: 18px;
 }
 
-.grille-atardi {
+.grille-aturdi {
 	display: grid;
 	grid-template-columns: minmax(0, 1fr) 250px;
 	gap: 16px;
@@ -63,12 +63,12 @@ body {
    Colonne de gauche : logo, avertissement, texte
    -------------------------------------------------------------------------- */
 
-.logo-atardi {
+.logo-aturdi {
 	text-align: center;
 	margin-bottom: 10px;
 }
 
-.logo-atardi img {
+.logo-aturdi img {
 	max-width: 100%;
 	height: auto;
 }
@@ -130,7 +130,7 @@ body {
 	color: var(--at-jaune);
 }
 
-/* la profession de foi d'ATARDI, tapée tout en majuscules comme il se doit */
+/* la profession de foi d'ATURDI, tapée tout en majuscules comme il se doit */
 .profession-de-foi {
 	margin: 0 0 14px;
 	padding: 13px 15px;
@@ -206,17 +206,17 @@ body {
    Colonne de droite : les deux boîtes empilées
    -------------------------------------------------------------------------- */
 
-.boite-atardi {
+.boite-aturdi {
 	margin-bottom: 16px;
 	background: #00072e;
 	border: 3px outset var(--at-bleu-clair);
 }
 
-.boite-atardi:last-child {
+.boite-aturdi:last-child {
 	margin-bottom: 0;
 }
 
-.boite-atardi h3 {
+.boite-aturdi h3 {
 	margin: 0;
 	padding: 7px 8px;
 	font-family: var(--at-titre);
@@ -339,7 +339,7 @@ body {
 	opacity: 0.85;
 }
 
-.pub-binbows .mot-atardi {
+.pub-binbows .mot-aturdi {
 	margin: 6px 0 0;
 	font-size: 11.5px;
 	color: #ffb9b9;
@@ -349,7 +349,7 @@ body {
    Pied de page amateur
    -------------------------------------------------------------------------- */
 
-.pied-atardi {
+.pied-aturdi {
 	margin-top: 20px;
 	padding-top: 14px;
 	border-top: 3px double var(--at-bleu-clair);
@@ -358,15 +358,15 @@ body {
 	color: #9fb6e8;
 }
 
-.pied-atardi a {
+.pied-aturdi a {
 	color: #8ad2ff;
 }
 
-.pied-atardi a:visited {
+.pied-aturdi a:visited {
 	color: #d7a8ff;
 }
 
-.compteur-atardi {
+.compteur-aturdi {
 	display: inline-flex;
 	gap: 2px;
 	padding: 3px;
@@ -375,7 +375,7 @@ body {
 	border: 2px inset #6b6b6b;
 }
 
-.compteur-atardi i {
+.compteur-aturdi i {
 	width: 14px;
 	font-family: var(--at-mono);
 	font-size: 15px;
@@ -427,7 +427,7 @@ body {
    -------------------------------------------------------------------------- */
 
 @media (max-width: 760px) {
-	.grille-atardi {
+	.grille-aturdi {
 		grid-template-columns: minmax(0, 1fr);
 	}
 

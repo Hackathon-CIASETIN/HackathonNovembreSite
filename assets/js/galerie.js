@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ATARDI — agrandissement des jaquettes
+   ATURDI — agrandissement des jaquettes
    Un clic sur une vignette l'ouvre en grand dans une fenêtre modale.
    On ferme avec le ×, en cliquant à côté, ou avec Échap.
    ========================================================================== */
